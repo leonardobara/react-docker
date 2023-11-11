@@ -41,6 +41,7 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: dockerenv
         environment_name: Dockerenv
+        existing_bucket_name: elasticbeanstalk-us-east-1-829110048242
         version_label: ${{ github.run_number }}
         region: us-east-1
         deployment_package: deploy.zip
