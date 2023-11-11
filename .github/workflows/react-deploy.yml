@@ -40,7 +40,7 @@ jobs:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: dockerenv
-        environment_name: Dockerenv
+        environment_name: Dockerenv-env
         existing_bucket_name: elasticbeanstalk-us-east-1-829110048242
         version_label: "version-${{ github.run_number }}-${{ github.sha }}"
         region: us-east-1
