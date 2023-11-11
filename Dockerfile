@@ -11,7 +11,6 @@ COPY . .
 
 RUN npm run build
 
-
 # Run Phase
 
 FROM nginx
