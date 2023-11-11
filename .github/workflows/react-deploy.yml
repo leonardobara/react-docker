@@ -12,12 +12,15 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker build -t cygnetops/react-test -f Dockerfile.dev .
+      - run: docker run -e CI=true cygnetops/react-test npm test
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16'
+        node-version: '16-alpine'
 
     - name: Build React App
       run: |
@@ -25,7 +28,7 @@ jobs:
         npm run build
 
     - name: Package for Elastic Beanstalk
-      run: zip -r deploy.zip build Dockerfile nginx.conf
+      run: zip -r deploy.zip . -x '*.git*'
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
